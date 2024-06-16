@@ -36,5 +36,11 @@
   },
   "bugs": {
     "url": "https://github.com/langx/rss-to-medium-autopublish/issues"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "node-schedule": "^2.1.1",
+    "rss-parser": "^3.13.0"
   }
 }
