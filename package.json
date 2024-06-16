@@ -1,0 +1,40 @@
+{
+  "name": "@langx/rss-to-medium-autopublish",
+  "version": "0.1.0",
+  "description": "A Node.js application that listens for new posts on an RSS feed and automatically publishes them to Medium. This tool ensures your content is synchronized across platforms effortlessly.",
+  "main": "index.js",
+  "author": {
+    "name": "LangX",
+    "email": "hi@langx.io"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "language",
+    "open-source",
+    "alternative",
+    "practice",
+    "culture",
+    "edtech",
+    "exchange",
+    "connect",
+    "learn",
+    "languages",
+    "tandem",
+    "languagelearning",
+    "language-exchange",
+    "langx",
+    "languageexchange",
+    "languagexchange",
+    "hellotalk"
+  ],
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/langx/rss-to-medium-autopublish.git"
+  },
+  "bugs": {
+    "url": "https://github.com/langx/rss-to-medium-autopublish/issues"
+  }
+}
