@@ -37,6 +37,9 @@ const publishToMedium = async (post) => {
       "Error publishing post:",
       error.response ? error.response.data : error.message
     );
+    throw new Error(
+      error.response ? error.response.data.errors[0].message : error.message
+    );
   }
 };
 

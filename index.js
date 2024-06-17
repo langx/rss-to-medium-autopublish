@@ -20,7 +20,9 @@ const syncRSSFeedToMedium = async () => {
         storePublishedPost(postToPublish.link);
         console.log(`Post published successfully: ${postToPublish.title}`);
       } catch (error) {
-        console.error(`Error publishing post: ${postToPublish.title}`, error);
+        console.error(
+          `Error publishing post: ${postToPublish.title} - ${error.message}`
+        );
       }
     } else {
       console.log("No new unpublished posts found.");
