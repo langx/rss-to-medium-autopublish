@@ -25,7 +25,7 @@ cd rss-to-medium-autopublish
 npm install
 ```
 
-Step 3: Setup Environment Variables
+### Step 3: Setup Environment Variables
 
 Create a `.env` file with your Medium API credentials and RSS feed URL. You can do this by copying the provided `.env.sample` file:
 
