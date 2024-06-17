@@ -128,3 +128,6 @@ data
 
 # Pm2
 ecosystem.config.js
+
+# Storage
+publishedPosts.json
