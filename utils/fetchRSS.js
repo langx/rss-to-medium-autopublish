@@ -19,7 +19,7 @@ const fetchRSSFeed = async () => {
   const baseUrl = feedUrl.origin;
   const feed = await parser.parseURL(feedUrl.href);
 
-  const items = feed.items.map((item) => {
+  const items = feed.items.reverse().map((item) => {
     const mediaContent = item["media:content"]
       ? item["media:content"]["$"].url
       : null;
