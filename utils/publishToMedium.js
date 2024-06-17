@@ -11,10 +11,13 @@ const publishToMedium = async (post) => {
     Accept: "application/json",
   };
 
-  // Include featured image if available
-  const content = post.media
-    ? `<img src="${post.media}" alt="Featured Image"/>` + post.content
-    : post.content;
+  // Add the post title, description, and author to the beginning of the post content
+  let content =
+    `<h1>${post.title}</h1>
+                 <p>${post.description}</p>
+                 <p>By <a href="${post.author.link}">${post.author.name}</a></p>
+                 <img src="${post.media}" alt="Featured Image"/>` +
+    post.content;
 
   const data = {
     title: post.title,
