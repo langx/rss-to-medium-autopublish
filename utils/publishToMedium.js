@@ -14,8 +14,7 @@ const publishToMedium = async (post) => {
   // Add the post title, description, and author to the beginning of the post content
   let content =
     `<h1>${post.title}</h1>
-                 <p>${post.description}</p>
-                 <p>By <a href="${post.author.link}">${post.author.name}</a></p>
+     <p>${post.description} <i>Author: <a href="${post.author.link}" target="_blank">${post.author.name}</a></i></p>
                  <img src="${post.media}" alt="Featured Image"/>` +
     post.content;
 
