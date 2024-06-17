@@ -2,12 +2,20 @@ require("dotenv").config();
 const { fetchRSSFeed } = require("./utils/fetchRSS");
 const { publishToMedium } = require("./utils/publishToMedium");
 const { scheduleJob } = require("./utils/scheduler");
+const { readPublishedPosts, storePublishedPost } = require("./utils/storage");
 
 // Fetch and publish the latest RSS feed item
 const syncRSSFeedToMedium = async () => {
   const post = await fetchRSSFeed();
   if (post) {
-    await publishToMedium(post);
+    const publishedPosts = readPublishedPosts();
+    if (publishedPosts.includes(post.link)) {
+      // Assuming post.link is the unique identifier
+      console.log("Post already published.");
+    } else {
+      await publishToMedium(post);
+      storePublishedPost(post.link);
+    }
   } else {
     console.log("No new posts found.");
   }
