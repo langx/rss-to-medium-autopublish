@@ -55,6 +55,11 @@ const updateContent = (content, baseUrl) => {
     return match.replace(/href="\//, `href="${baseUrl}/`);
   });
 
+  // Add baseUrl to relative src in img tags
+  content = content.replace(/<img[^>]*src="\/(?!\/)[^"]*"[^>]*>/g, (match) => {
+    return match.replace(/src="\//, `src="${baseUrl}/`);
+  });
+
   return content;
 };
 
