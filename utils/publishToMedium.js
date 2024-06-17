@@ -26,7 +26,7 @@ const publishToMedium = async (post) => {
     tags: post.categories,
     license: "all-rights-reserved",
     notifyFollowers: true,
-    publishStatus: "draft",
+    publishStatus: "public",
   };
 
   try {
