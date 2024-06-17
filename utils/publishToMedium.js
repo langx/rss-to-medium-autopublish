@@ -10,13 +10,24 @@ const publishToMedium = async (post) => {
     "Content-Type": "application/json",
     Accept: "application/json",
   };
+
+  // Include featured image if available
+  const content = post.media
+    ? `<img src="${post.media}" alt="Featured Image"/>` + post.content
+    : post.content;
+
   const data = {
     title: post.title,
     contentFormat: "html",
-    content: post.content,
+    content: content,
     canonicalUrl: post.link,
-    publishStatus: "public",
+    tags: post.categories,
+    description: post.description,
+    license: "all-rights-reserved",
+    notifyFollowers: true,
+    publishStatus: "draft",
   };
+
   try {
     const response = await axios.post(url, data, { headers });
     console.log(`Post published successfully: ${response.data.data.url}`);
