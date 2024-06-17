@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const storageFilePath = path.join(__dirname, "publishedPosts.json");
+const storageFilePath = path.join(process.cwd(), "/publishedPosts.json");
 
 // Function to read stored identifiers
 const readPublishedPosts = () => {
