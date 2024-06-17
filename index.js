@@ -4,19 +4,26 @@ const { publishToMedium } = require("./utils/publishToMedium");
 const { scheduleJob } = require("./utils/scheduler");
 const { readPublishedPosts, storePublishedPost } = require("./utils/storage");
 
-// Fetch and publish the latest RSS feed items
+// Fetch and publish one RSS feed item
 const syncRSSFeedToMedium = async () => {
   const posts = await fetchRSSFeed();
   if (posts && posts.length > 0) {
     const publishedPosts = readPublishedPosts();
-    for (const post of posts) {
-      if (publishedPosts.includes(post.link)) {
-        // Assuming post.link is the unique identifier
-        console.log(`Post already published: ${post.title}`);
-      } else {
-        await publishToMedium(post);
-        storePublishedPost(post.link);
+    const unpublishedPosts = posts.filter(
+      (post) => !publishedPosts.includes(post.link)
+    );
+
+    if (unpublishedPosts.length > 0) {
+      const postToPublish = unpublishedPosts[0];
+      try {
+        await publishToMedium(postToPublish);
+        storePublishedPost(postToPublish.link);
+        console.log(`Post published successfully: ${postToPublish.title}`);
+      } catch (error) {
+        console.error(`Error publishing post: ${postToPublish.title}`, error);
       }
+    } else {
+      console.log("No new unpublished posts found.");
     }
   } else {
     console.log("No new posts found.");
