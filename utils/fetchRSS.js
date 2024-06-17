@@ -1,7 +1,13 @@
 const RSSParser = require("rss-parser");
 const parser = new RSSParser({
   customFields: {
-    item: ["media:content", "media:thumbnail", "dc:creator", "author"],
+    item: [
+      "media:content",
+      "media:thumbnail",
+      "dc:creator",
+      "author",
+      "description",
+    ],
   },
 });
 
