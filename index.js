@@ -4,17 +4,19 @@ const { publishToMedium } = require("./utils/publishToMedium");
 const { scheduleJob } = require("./utils/scheduler");
 const { readPublishedPosts, storePublishedPost } = require("./utils/storage");
 
-// Fetch and publish the latest RSS feed item
+// Fetch and publish the latest RSS feed items
 const syncRSSFeedToMedium = async () => {
-  const post = await fetchRSSFeed();
-  if (post) {
+  const posts = await fetchRSSFeed();
+  if (posts && posts.length > 0) {
     const publishedPosts = readPublishedPosts();
-    if (publishedPosts.includes(post.link)) {
-      // Assuming post.link is the unique identifier
-      console.log("Post already published.");
-    } else {
-      await publishToMedium(post);
-      storePublishedPost(post.link);
+    for (const post of posts) {
+      if (publishedPosts.includes(post.link)) {
+        // Assuming post.link is the unique identifier
+        console.log(`Post already published: ${post.title}`);
+      } else {
+        await publishToMedium(post);
+        storePublishedPost(post.link);
+      }
     }
   } else {
     console.log("No new posts found.");

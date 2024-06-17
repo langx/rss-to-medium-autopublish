@@ -16,8 +16,7 @@ const fetchRSSFeed = async () => {
   const baseUrl = feedUrl.origin;
   const feed = await parser.parseURL(feedUrl.href);
 
-  if (feed.items.length > 0) {
-    const item = feed.items[feed.items.length - 1]; // Fetch only the latest item
+  const items = feed.items.map((item) => {
     const mediaContent = item["media:content"]
       ? item["media:content"]["$"].url
       : null;
@@ -42,8 +41,9 @@ const fetchRSSFeed = async () => {
         link: item.author ? item.author.link : "",
       },
     };
-  }
-  return null;
+  });
+
+  return items;
 };
 
 const updateContent = (content, baseUrl) => {
