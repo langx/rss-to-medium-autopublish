@@ -43,7 +43,7 @@ Then, open the `.env` file and replace the placeholders with your actual values
 node index.js
 ```
 
-The application will check for new RSS feed items periodically (e.g., every hour) and publish them to Medium.
+The application will check for new RSS feed items periodically (e.g., every hour). If a new item is found, it will publish the oldest item that is not already in `publishedPosts.json` to Medium. Please note that the application publishes only one blog post at a time.
 
 ## How to Use with PM2
 
