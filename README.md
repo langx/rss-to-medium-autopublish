@@ -62,14 +62,14 @@ npm install pm2 -g
 You can start your application with PM2 and set it to restart at specific times using cron syntax. For example, to start the application and set it to restart every day at 11 AM and 6 PM, you can use the following command:
 
 ```bash
-pm2 start index.js --name "rss-to-medium-autopublish" --cron "0 11,18 * * *"
+pm2 start index.js --name "rss2medium" --cron "0 * * * *"
 ```
 
 In this command:
 
 - `pm2 start index.js` starts the application.
-- `--name "rss-to-medium-autopublish"` gives the process a name for easier management.
-- `--cron "0 11,18 * * *"` sets the application to restart at the specified times.
+- `--name "rss2medium"` gives the process a name for easier management.
+- `--cron "0 * * * *"` sets the application to restart at minute 0 past every hour. In other words, this schedule will cause the application to restart at the start of every hour.
 
 3. **Check the Application Status**
 
