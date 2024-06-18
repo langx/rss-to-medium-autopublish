@@ -33,6 +33,9 @@ const syncRSSFeedToMedium = async () => {
 };
 
 // Schedule the job to run periodically
-scheduleJob("0 11,18 * * *", syncRSSFeedToMedium); // Runs every day at 11:00 AM and 6:00 PM
+// scheduleJob("0 11,18 * * *", syncRSSFeedToMedium); // Runs every day at 11:00 AM and 6:00 PM
+
+// Run the job immediately
+syncRSSFeedToMedium();
 
 console.log("RSS to Medium autopublisher is running...");
