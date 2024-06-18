@@ -45,6 +45,58 @@ node index.js
 
 The application will check for new RSS feed items periodically (e.g., every hour) and publish them to Medium.
 
+## How to Use with PM2
+
+[PM2](https://pm2.keymetrics.io/) is a production process manager for Node.js applications with a built-in load balancer. It allows you to keep applications alive forever, reload them without downtime, create application clusters, and more.
+
+1. **Install PM2**
+
+If you haven't installed PM2 on your machine, you can install it globally with the following command:
+
+```bash
+npm install pm2 -g
+```
+
+2. **Start the Application with PM2**
+
+You can start your application with PM2 and set it to restart at specific times using cron syntax. For example, to start the application and set it to restart every day at 11 AM and 6 PM, you can use the following command:
+
+```bash
+pm2 start index.js --name "rss-to-medium-autopublish" --cron "0 11,18 * * *"
+```
+
+In this command:
+
+- `pm2 start index.js` starts the application.
+- `--name "rss-to-medium-autopublish"` gives the process a name for easier management.
+- `--cron "0 11,18 * * *"` sets the application to restart at the specified times.
+
+3. **Check the Application Status**
+
+You can check the status of your application with the following command:
+
+```bash
+pm2 status rss-to-medium-autopublish
+```
+
+4. **Stop the Application**
+
+To stop the application, you can use the following command:
+
+```bash
+pm2 stop rss-to-medium-autopublish
+```
+
+5. **Restart the Application**
+
+To restart the application, you can use the following command:
+
+```bash
+pm2 restart rss-to-medium-autopublish
+```
+
+Remember to replace `index.js` with the path to your main application file if it's different, and adjust the cron syntax as needed to match your desired schedule.
+
 ## License
 
 BSD 3-Clause License
